@@ -1,0 +1,10 @@
+{
+    "agendaApi": {
+        "root": "/api",
+        "server": {
+            "connection": {
+                "port": 3000
+            }
+        }
+    }
+}
