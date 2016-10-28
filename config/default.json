@@ -5,6 +5,8 @@
             "connection": {
                 "port": 3000
             }
+        },
+        "agenda": {
         }
     }
 }

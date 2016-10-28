@@ -1,18 +1,3 @@
-# Agenda REST API
-
-Provide a brief description of the project here
-
-# TODO
-* joi validation
-* how to throw error and get right status code and message
-* global exception handler
-* what about optional trailing slashes?
-* process shutdown... agenda.stop... graceful
-* code coverage
-* docker
-
-
-# License
 (The MIT License)
 
 Copyright (c) 2016 Steven Slayden
@@ -33,3 +18,4 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+

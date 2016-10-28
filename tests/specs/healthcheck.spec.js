@@ -5,7 +5,7 @@ const Promise = require("bluebird");
 const agendaApiFactory = require("../..");
 const assert = require("assert");
 const logger = require("winston");
-
+const httpStatusCodes = require("../../lib/http-status-codes");
 
 // todo: need promise? or does start return a promise?
 const createAgendaApi = () => {
@@ -27,7 +27,7 @@ describe("healthcheck", () => {
         return request.get("http://localhost:3000/api/healthcheck");
       })
       .then((res) => {
-        assert.equal(200, res.statusCode);
+        assert.equal(httpStatusCodes.OK, res.statusCode);
         assert.equal("OK", res.body.status);
         done();
       })
@@ -36,7 +36,7 @@ describe("healthcheck", () => {
         // todo: put this in a function
         if (agendaApi) {
           agendaApi.server.stop()
-            .catch((err) => {
+            .catch((err) => { //eslint-disable-line max-nested-callbacks
               logger.error(err);
             });
         }

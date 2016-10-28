@@ -1,9 +1,10 @@
 {
-    "extends": [
-        "./node_modules/eslint-config-walmart/configurations/es6-node.js"
-    ],
-    "env": {
-        "node": true
-    }
+  "extends": [
+    "./node_modules/eslint-config-walmart/configurations/es6-node.js"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true
+  }
 }
 

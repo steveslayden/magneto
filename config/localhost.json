@@ -1,5 +1,16 @@
 {
-    "agendaApi": {
-
+  "agendaApi": {
+    "agenda": {
+      "processEvery": "30 seconds",
+      "db": {
+        "address": "mongodb://127.0.0.1/agenda",
+        "collection": "agendaJobs",
+        "options": {
+          "server": {
+            "auto_reconnect": true
+          }
+        }
+      }
     }
+  }
 }
