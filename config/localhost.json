@@ -1,9 +1,9 @@
 {
-  "agendaApi": {
+  "magneto": {
     "agenda": {
       "processEvery": "30 seconds",
       "db": {
-        "address": "mongodb://127.0.0.1/agenda",
+        "address": "mongodb://127.0.0.1/magneto",
         "collection": "agendaJobs",
         "options": {
           "server": {

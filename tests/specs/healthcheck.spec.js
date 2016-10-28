@@ -2,17 +2,17 @@
 
 const request = require("superagent");
 const Promise = require("bluebird");
-const agendaApiFactory = require("../..");
+const magnetoFactory = require("../..");
 const assert = require("assert");
 const logger = require("winston");
 const httpStatusCodes = require("../../lib/http-status-codes");
 
 // todo: need promise? or does start return a promise?
-const createAgendaApi = () => {
+const createMagneto = () => {
   return new Promise((resolve) => {
-    const agendaApi = agendaApiFactory();
-    agendaApi.server.start(() => {
-      resolve(agendaApi);
+    const magneto = magnetoFactory();
+    magneto.server.start(() => {
+      resolve(magneto);
     });
   });
 };
@@ -20,10 +20,10 @@ const createAgendaApi = () => {
 describe("healthcheck", () => {
 
   it("should return OK 200", (done) => {
-    let agendaApi;
-    createAgendaApi()
+    let magneto;
+    createMagneto()
       .then((results) => {
-        agendaApi = results;
+        magneto = results;
         return request.get("http://localhost:3000/api/healthcheck");
       })
       .then((res) => {
@@ -34,8 +34,8 @@ describe("healthcheck", () => {
       .catch(done)
       .finally(() => {
         // todo: put this in a function
-        if (agendaApi) {
-          agendaApi.server.stop()
+        if (magneto) {
+          magneto.server.stop()
             .catch((err) => { //eslint-disable-line max-nested-callbacks
               logger.error(err);
             });

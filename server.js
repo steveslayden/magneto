@@ -1,12 +1,12 @@
 "use strict";
 
-const config = require("config").get("agendaApi");
-const agendaApiFactory = require(".");
+const config = require("config").get("magneto");
+const magnetoFactory = require(".");
 const logger = require("winston");
 
-const agendaApi = agendaApiFactory(config);
+const magneto = magnetoFactory(config);
 
-agendaApi.server.start(() => {
-  logger.info(`Agenda API started at: ${agendaApi.server.info.uri}`);
+magneto.server.start(() => {
+  logger.info(`Magneto started at: ${magneto.server.info.uri}`);
 });
 

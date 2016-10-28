@@ -1,4 +1,4 @@
 "use strict";
 
-module.exports = require("./lib/agenda-api");
+module.exports = require("./lib/magneto");
 

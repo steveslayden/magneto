@@ -1,8 +1,9 @@
-# Agenda REST API
+# MAGNETO
 
-Provide a brief description of the project here
+Multi-channel job scheduling service.
 
 # TODO
+* confippet
 * joi validation
 * how to throw error and get right status code and message
 * global exception handler
@@ -10,6 +11,15 @@ Provide a brief description of the project here
 * process shutdown... agenda.stop... graceful
 * code coverage
 * docker
+
+# API CHANNELS
+* REST API
+* GRPC API
+
+# NOTIFICATION CHANNELS
+* Web Hooks
+* Web Sockets
+* Rabbit MQ
 
 
 # License

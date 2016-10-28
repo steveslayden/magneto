@@ -1,12 +1,12 @@
 {
-    "agendaApi": {
-        "root": "/api",
-        "server": {
-            "connection": {
-                "port": 3000
-            }
-        },
-        "agenda": {
+  "magneto": {
+    "root": "/api",
+      "server": {
+        "connection": {
+          "port": 3000
         }
+      },
+    "agenda": {
     }
+  }
 }
