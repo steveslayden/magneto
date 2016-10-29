@@ -11,6 +11,9 @@
           }
         }
       }
+    },
+    "winston": {
+      "level": "debug"
     }
   }
 }
