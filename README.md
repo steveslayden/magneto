@@ -11,6 +11,7 @@ Multi-channel job scheduling service.
 * process shutdown... agenda.stop... graceful
 * code coverage
 * docker
+* more sophisticated health check
 
 # API CHANNELS
 * REST API

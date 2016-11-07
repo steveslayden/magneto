@@ -1,5 +1,6 @@
 "use strict";
 
+const _ = require("lodash");
 const request = require("superagent");
 const Promise = require("bluebird");
 const magnetoFactory = require("../..");
@@ -7,11 +8,10 @@ const assert = require("assert");
 const logger = require("winston");
 const httpStatusCodes = require("../../lib/http-status-codes");
 
-// todo: need promise? or does start return a promise?
 const createMagneto = () => {
   return new Promise((resolve) => {
     const magneto = magnetoFactory();
-    magneto.server.start(() => {
+    magneto.server.start().then(() => {
       resolve(magneto);
     });
   });
@@ -33,13 +33,7 @@ describe("healthcheck", () => {
       })
       .catch(done)
       .finally(() => {
-        // todo: put this in a function
-        if (magneto) {
-          magneto.server.stop()
-            .catch((err) => { //eslint-disable-line max-nested-callbacks
-              logger.error(err);
-            });
-        }
+        _.invoke(magneto, "stop");
       });
   });
 });
