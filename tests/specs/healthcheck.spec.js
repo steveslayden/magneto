@@ -1,20 +1,29 @@
 "use strict";
 
 const _ = require("lodash");
+const config = require("config");
 const request = require("superagent");
-const Promise = require("bluebird");
 const magnetoFactory = require("../..");
 const assert = require("assert");
 const logger = require("winston");
 const httpStatusCodes = require("../../lib/http-status-codes");
 
 const createMagneto = () => {
-  return new Promise((resolve) => {
-    const magneto = magnetoFactory();
-    magneto.server.start().then(() => {
-      resolve(magneto);
+  return magnetoFactory(config.get("magneto"))
+    .then((magneto) => {
+      magneto.server.start().then(() => {
+        return magneto;
+      });
     });
-  });
+};
+
+const stopMagneto = (magneto) => {
+  if(!magneto) {
+    return;
+  }
+
+  magneto.stop()
+    .catch(err => logger.error(err));
 };
 
 describe("healthcheck", () => {
@@ -32,8 +41,8 @@ describe("healthcheck", () => {
         done();
       })
       .catch(done)
-      .finally(() => {
-        _.invoke(magneto, "stop");
+      .then(() => {
+        stopMagneto(magneto);
       });
   });
 });
