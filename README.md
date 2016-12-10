@@ -3,7 +3,10 @@
 Multi-channel job scheduling service.
 
 # TODO
-* magneto.start
+* use debugger rather than winston
+* move to bluebird
+* use http-status-codes
+* specify promise library
 * joi validation
 * how to throw error and get right status code and message
 * global exception handler
