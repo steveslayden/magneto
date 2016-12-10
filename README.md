@@ -3,9 +3,10 @@
 Multi-channel job scheduling service.
 
 # TODO
-* use debugger rather than winston
+* route error handling
+* implement web-hook channel
+* add winston filter to filter on meta tag field
 * move to bluebird
-* use http-status-codes
 * specify promise library
 * joi validation
 * how to throw error and get right status code and message
@@ -22,6 +23,7 @@ Multi-channel job scheduling service.
 
 # NOTIFICATION CHANNELS
 * Web Hooks
+* Lambda
 * Web Sockets
 * Rabbit MQ
 

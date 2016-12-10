@@ -3,7 +3,6 @@
 const _ = require("lodash");
 const config = require("config");
 const axios = require("axios");
-const dateFnsParse = require("date-fns/parse");
 const magnetoFactory = require("../..");
 const assert = require("assert");
 const httpStatusCodes = require("http-status-codes");
@@ -19,7 +18,7 @@ const createOnceJob = () => {
       type: "once",
       when: new Date()
     },
-    job: {
+    channel: {
       type: "webhook",
       method: "POST",
       url: "http://localhost:3000/",
@@ -90,7 +89,7 @@ describe("job-routes", () => {
       assert.equal(httpStatusCodes.OK, response.status);
       assert(response.data.length >= JOB_COUNT);
       jobIds.forEach((jobId) => {
-        assert(response.data.find((j) => j.id == jobId));
+        assert(response.data.find((j) => j.id === jobId));
       });
     });
   });
@@ -113,7 +112,10 @@ describe("job-routes", () => {
       .then((response) => {
         assert.equal(httpStatusCodes.NO_CONTENT, response.status);
         return axios.get(`${JOB_API_URL}/${jobId}`, {
-          validateStatus: (status) => { return status >= 200 && status < 500; }
+          validateStatus: (status) => {
+            return status >= httpStatusCodes.OK &&
+              status < httpStatusCodes.INTERNAL_SERVICE_ERROR;
+          }
         });
       })
       .then((response) => {
